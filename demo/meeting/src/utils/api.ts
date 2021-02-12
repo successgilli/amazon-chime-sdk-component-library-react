@@ -1,10 +1,6 @@
 // Copyright 2020-2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import routes from '../constants/routes';
-
-export const BASE_URL = routes.HOME;
-
 interface MeetingResponse {
   JoinInfo: {
     Attendee: any;
@@ -12,19 +8,23 @@ interface MeetingResponse {
   };
 }
 
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 export async function fetchMeeting(
-  meetingId: string,
-  name: string,
-  region: string
+  name = 'Anonymous',
+  meetingId = uuidv4()
 ): Promise<MeetingResponse> {
   const response = await fetch(
-    `${BASE_URL}join?title=${encodeURIComponent(
+    `/join?title=${encodeURIComponent(
       meetingId
-    )}&name=${encodeURIComponent(name)}${
-      region ? `&region=${encodeURIComponent(region)}` : ''
-    }`,
+    )}&name=${encodeURIComponent(name)}`,
     {
-      method: 'POST'
+      method: 'POST',
     }
   );
   const data = await response.json();
@@ -38,7 +38,7 @@ export async function fetchMeeting(
 
 export function createGetAttendeeCallback(meetingId: string) {
   return async (chimeAttendeeId: string, externalUserId?: string) => {
-    const attendeeUrl = `${BASE_URL}attendee?title=${encodeURIComponent(
+    const attendeeUrl = `/attendee?title=${encodeURIComponent(
       meetingId
     )}&attendee=${encodeURIComponent(chimeAttendeeId)}`;
     const res = await fetch(attendeeUrl, {
@@ -59,7 +59,7 @@ export function createGetAttendeeCallback(meetingId: string) {
 
 export async function endMeeting(meetingId: string) {
   const res = await fetch(
-    `${BASE_URL}end?title=${encodeURIComponent(meetingId)}`,
+    `/end?title=${encodeURIComponent(meetingId)}`,
     {
       method: 'POST'
     }

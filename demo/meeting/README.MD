@@ -6,41 +6,28 @@ This is the SDK react meeting demo app. It shows how to use the Amazon Chime SDK
 
 1. If you haven't already, [configure your AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html).
 
-2. Install root dependencies within the root directory: `npm install`
+2. Navigate to the meeting demo folder: `cd demo/meeting`
 
-3. Navigate to the meeting demo folder: `cd demo/meeting`
+3. Run `npm run start`. This will start the webpack server for your React application and the Node server for making Chime API calls.
 
-4. Install [yalc](https://www.npmjs.com/package/yalc) to get the latest changes from the local component library: `npm i yalc -g`
+4. Open https://localhost:9000/ in your browser
 
-5. Start the webpack server and node server concurrently: `npm run start`
+## Exercise
 
-6. Open https://0.0.0.0:9000/ in your browser
+Attempt to follow the [public documentation](https://aws.github.io/amazon-chime-sdk-component-library-react/?path=/story/introduction--page) to build a meetings app.
 
-### Troubleshooting
 
-- You can change the `amazon-chime-sdk-js` [log level](https://aws.github.io/amazon-chime-sdk-js/enums/loglevel.html) by providing `logLevel` through URL as a query parameter with value 'warn' | 'error' | 'info' | 'debug' | 'off'.
-   ```
-    https://0.0.0.0:9000/?logLevel=debug
-    ```
+### Boilerplate
+This app is a bare bones React app, with react router installed. You will need to install the necessary dependencies, just as a builder would if they were starting out from scratch.
 
-- `UnrecognizedClientException: The security token included in the request is invalid.` when trying to join a meeting
+There is `fetchMeeting` function provided in the `/utils/api.ts` file. This will provide the AWS Chime reponse for creating a meeting and attendee. `fetchMeeting` defaults to using a UUID for the meeting title and an "Anonymous" username, but you can also hardcode these values or create a simple input to modify the values. You will need the use the same meeting title for multiple attendees to join the same meeting.
 
-  This likely means that your AWS credentials are invalid. Refer to the [AWS Configuration docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) for setting up your credentials.
+### Build an meetings app
+Try to get a minimal meeting experience working using SDK components, hooks, or both. This includes...
 
-## To deploy the serverless device demo
+- A way to start/stop your local video
+- A way to mute/unmute yourself
+- Showing the local video
+- Showing the remote videos
 
-### Install aws and sam command line tools
-
-- [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html)
-- [Install the AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-
-### Run deployment script
-
-The following will create a CloudFormation stack containing a Lambda and API Gateway deployment that runs the demo. Note that S3 bucket name should be globally unique.
-
-```
-cd /serverless
-node ./deploy.js -r us-east-1 -b <YOUR-S3-BUCKET-NAME> -s <YOUR-CLOUDFORMATION-STACK-NAME>
-```
-
-The script will create an S3 bucket and CloudFormation stack with Lambda and API Gateway resources required to run the demo. After the script finishes, it will output a URL that can be opened in a browser.
+If you complete this, feel free to try to add to your meetings app. This could include a devices preview screen that shows the user their local video preview, or a roster for the present attendees in the meeting.

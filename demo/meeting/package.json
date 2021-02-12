@@ -8,13 +8,13 @@
     "@types/webpack-env": "^1.15.1",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
-    "amazon-chime-sdk-component-library-react": "file:.yalc/amazon-chime-sdk-component-library-react",
+    "amazon-chime-sdk-component-library-react": "^2.0.1",
     "amazon-chime-sdk-js": "^2.4.1",
     "aws-sdk": "^2.731.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "styled-components": "^5.0.0",
+    "styled-components": "^5.2.1",
     "styled-system": "^5.1.5",
     "throttle-debounce": "^2.3.0"
   },
@@ -25,7 +25,7 @@
     "start:client": "npm run build:fast && webpack-dev-server",
     "start:backend": "node server.js",
     "start:fast": "concurrently \"npm run start:client\" \"npm run start:backend\"",
-    "start": "npm run deps && yalc add amazon-chime-sdk-component-library-react && npm install && npm run start:fast"
+    "start": "npm install && npm run start:fast"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
