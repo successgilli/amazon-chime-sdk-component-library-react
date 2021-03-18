@@ -25,7 +25,6 @@ Documentation on these components and how to use them can be found on [Amazon Ch
 
 [Amazon Chime SDK for JavaScript Documentation](https://aws.github.io/amazon-chime-sdk-js/#amazon-chime-sdk-for-javascript)
 
-[Chime SDK UI Component Library Documentation](https://aws.github.io/amazon-chime-sdk-component-library-react/)
 [Migration from V1 to V2](https://aws.github.io/amazon-chime-sdk-component-library-react/?path=/docs/migration-to-v2--page)
 
 ## Examples
