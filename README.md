@@ -3,6 +3,7 @@
 <a href="https://github.com/aws/amazon-chime-sdk-component-library-react"><img src="https://github.com/aws/amazon-chime-sdk-component-library-react/workflows/CI%20Workflow/badge.svg"></a>
 
 [Amazon Chime SDK React Components Library Documentation](https://aws.github.io/amazon-chime-sdk-component-library-react/)
+
 [Amazon Chime SDK for JavaScript Library](https://github.com/aws/amazon-chime-sdk-js/)
 
 The Amazon Chime SDK makes it easy to add collaborative audio calling, video calling, and screen share features to web applications by using the same infrastructure services that power millions of Amazon Chime online meetings.
